@@ -57,7 +57,12 @@ const App: FC = () => {
 
   return (
     <div>
-      <AppHeader />
+      <AppHeader
+        allTasks={todos.length}
+        Todo={todos.filter((item) => item.todo).length}
+        Doing={todos.filter((item) => item.doing).length}
+        Done={todos.filter((item) => item.done).length}
+      />
       <AddTodo
         addNewTodo={AddNewTodo} />
       <TodoList

@@ -1,0 +1,16 @@
+.AppHeader {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 800px;
+    margin: 0 auto;
+    margin-top: 8px;
+}
+
+.AppHeader h2 {
+    text-align: center;
+}
+
+.tasks span {
+    margin-right: 20px;
+}
