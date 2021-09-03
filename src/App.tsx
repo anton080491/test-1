@@ -17,9 +17,15 @@ const App: FC = () => {
 
   let [maxId, setMaxId] = useState<number>(4);
 
-  const AddNewTodo = (name: string) => {
+  const AddNewTodo = (name: string, deadLineData: string, deadLineTime: string) => {
     setMaxId(++maxId);
     const newTodo: Todo = { id: maxId, todo: true, doing: false, done: false, name: name };
+    if (deadLineData) {
+      newTodo.deadLineData = deadLineData;
+    }
+    if (deadLineTime) {
+      newTodo.deadLineTime = deadLineTime;
+    }
     setTodos(prev => [newTodo, ...prev]);
     console.log(newTodo);
   }

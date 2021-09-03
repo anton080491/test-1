@@ -46,6 +46,12 @@ const TodoListItem: FC<TodoListItemProps> = ({ todo, onRemove, changeTodo, chang
                     style={{ background: todo.done ? '#66A3D2' : 'white' }}
                     onClick={event => ChangeDoneStatus(event, todo.id)}
                 >Done</span>
+                {
+                    todo.deadLineData ? <span className='deadLine'>{todo.deadLineData}</span> : null
+                }
+                {
+                    todo.deadLineTime ? <span className='deadLine'>{todo.deadLineTime}</span> : null
+                }
                 <span style={{ cursor: "pointer" }}
                     onClick={event => removeTodo(event, todo.id)}> &times;</span>
             </div>
