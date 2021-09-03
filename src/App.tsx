@@ -6,6 +6,8 @@ import AppHeader from './components/appHeader';
 
 import { Todo } from './components/types/types';
 
+declare var confirm: (question: string) => boolean
+
 const App: FC = () => {
   const [todos, setTodos] = useState<Todo[]>([
     { id: 1, name: "To wash a car" },
@@ -21,11 +23,19 @@ const App: FC = () => {
     setTodos(prev => [newTodo, ...prev]);
   }
 
+  const RemoveTodo = (id: number) => {
+    const shoudRemove = confirm('Are you sure you want to delete the task?')
+    if (shoudRemove) {
+      setTodos(prev => prev.filter(todo => todo.id !== id))
+    }
+  }
+
   return (
     <div>
       <AppHeader />
       <AddTodo addNewTodo={AddNewTodo} />
-      <TodoList todos={todos} />
+      <TodoList todos={todos}
+        onRemove={RemoveTodo} />
     </div>
   )
 }
