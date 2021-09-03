@@ -1,15 +1,25 @@
 import React, { FC } from "react";
+import { Todo } from '../types/types';
 import TodoListItem from '../todoListItem';
 import './todoList.css';
 
+interface TodoListProps {
+    todos: Todo[];
+}
 
 
 
-const TodoList: FC = () => {
+const TodoList: FC<TodoListProps> = ({ todos }) => {
+
 
     return (
         <div>
-            <h2>hello</h2>
+            {todos.map(todo =>
+                <TodoListItem
+                    key={todo.id}
+                    todo={todo}
+                />
+            )}
         </div>
     )
 }

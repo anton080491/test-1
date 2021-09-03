@@ -1,0 +1,19 @@
+.todoListItem {
+    display: flex;
+    justify-content: space-between;
+    width: 800px;
+    margin: 0 auto;
+    margin-top: 8px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.todoListItem:nth-child(2n+1) {
+    background-color: bisque;
+}
+
+
+.todoListItem .wrapper {
+    display: flex;
+    flex-direction: row;
+}

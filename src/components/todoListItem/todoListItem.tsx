@@ -1,11 +1,21 @@
 import React, { FC } from "react";
+import { Todo } from '../types/types';
 import './todoListItem.css';
 
-const TodoListItem: FC = () => {
+interface TodoListItemProps {
+    todo: Todo;
+}
+
+const TodoListItem: FC<TodoListItemProps> = ({ todo }) => {
+
+
 
     return (
-        <div>
-            <h2>hello</h2>
+        <div className="todoListItem">
+            <span> {todo.name}</span>
+            <div className="wrapper">
+                <span style={{ cursor: "pointer" }}> &times;</span>
+            </div>
         </div>
     )
 }
