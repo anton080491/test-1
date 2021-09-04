@@ -25,7 +25,7 @@ const TodoList: FC<TodoListProps> = ({ todos, onRemove, changeTodo, changeDoing,
 
 
     return (
-        <div>
+        <React.Fragment>
             {todos.map(todo =>
                 <TodoListItem
                     key={todo.id}
@@ -36,7 +36,7 @@ const TodoList: FC<TodoListProps> = ({ todos, onRemove, changeTodo, changeDoing,
                     changeDone={changeDone}
                 />
             )}
-        </div>
+        </React.Fragment>
     )
 }
 

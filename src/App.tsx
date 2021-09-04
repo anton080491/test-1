@@ -62,7 +62,7 @@ const App: FC = () => {
   }
 
   return (
-    <div>
+    <React.Fragment>
       <AppHeader
         allTasks={todos.length}
         Todo={todos.filter((item) => item.todo).length}
@@ -77,7 +77,7 @@ const App: FC = () => {
         changeTodo={ChangeTodoStatus}
         changeDoing={ChangeDoingStatus}
         changeDone={ChangeDoneStatus} />
-    </div>
+    </React.Fragment>
   )
 }
 

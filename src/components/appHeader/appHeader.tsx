@@ -10,15 +10,18 @@ interface AppHeaderProps {
 
 const AppHeader: FC<AppHeaderProps> = ({ allTasks, Todo, Done, Doing }) => {
     return (
-        <div className="AppHeader">
-            <h2>Task list</h2>
-            <div className="tasks">
-                <span>All tasks: {allTasks}</span>
-                <span>Todo: {Todo}</span>
-                <span>Doing: {Doing}</span>
-                <span>Done: {Done}</span>
+        <React.Fragment>
+            <div className="AppHeader">
+                <h2>Task list</h2>
+                <div className="tasks">
+                    <span>All tasks: {allTasks}</span>
+                    <span>Todo: {Todo}</span>
+                    <span>Doing: {Doing}</span>
+                    <span>Done: {Done}</span>
+                </div>
             </div>
-        </div>
+        </React.Fragment>
+
     )
 
 }
