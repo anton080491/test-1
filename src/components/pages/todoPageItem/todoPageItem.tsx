@@ -52,7 +52,7 @@ const TodoPageItem: FC<TodoPageItemProps> = ({ todo, changeTodo, changeDoing, ch
                         onClick={event => ChangeDoneStatus(event, todo.id)}
                     >Done</span>
                     {
-                        todo.deadLineData ? <span className='deadLine' onClick={event => event.preventDefault()}>{todo.deadLineData}</span> : null
+                        todo.deadLineData ? <span className='deadLine'>{todo.deadLineData}</span> : null
                     }
                     {
                         todo.deadLineTime ? <span className='deadLine'>{todo.deadLineTime}</span> : null

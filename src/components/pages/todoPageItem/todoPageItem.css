@@ -41,3 +41,11 @@
 .todoPageItem__desc {
     width: 800px;
 }
+
+.todoPageItem .marginTop span:nth-child(4) {
+    transform: scale(1);
+}
+
+.todoPageItem .marginTop span:nth-child(5) {
+    transform: scale(1);
+}
