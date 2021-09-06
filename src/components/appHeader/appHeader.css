@@ -7,8 +7,20 @@
     margin-top: 8px;
 }
 
-.AppHeader h2 {
+.AppHeader a {
+    display: flex;
+    justify-content: center;
+}
+
+.AppHeader a h2 {
+    display: block;
     text-align: center;
+    transition: 0.3s;
+}
+
+.AppHeader a h2:hover {
+    cursor: pointer;
+    transform: scale(1.1);
 }
 
 .tasks span {

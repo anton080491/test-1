@@ -1,5 +1,7 @@
 import React, { FC } from 'react';
+import { Link } from 'react-router-dom';
 import './appHeader.css';
+
 
 interface AppHeaderProps {
     allTasks: number;
@@ -12,7 +14,7 @@ const AppHeader: FC<AppHeaderProps> = ({ allTasks, Todo, Done, Doing }) => {
     return (
         <React.Fragment>
             <div className="AppHeader">
-                <h2>Task list</h2>
+                <Link to={'/'}> <h2>Task list</h2></Link>
                 <div className="tasks">
                     <span>All tasks: {allTasks}</span>
                     <span>Todo: {Todo}</span>

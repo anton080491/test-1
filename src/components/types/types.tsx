@@ -1,4 +1,5 @@
 export interface Todo {
+    description?: string;
     deadLineData?: string;
     deadLineTime?: string;
     id: number;

@@ -6,6 +6,12 @@
     margin-top: 8px;
     border-radius: 10px;
     padding: 10px;
+    transition: 0.3s;
+    z-index: 1;
+}
+
+.todoListItem:hover {
+    transform: scale(1.03);
 }
 
 .todoListItem:nth-child(2n+1) {
@@ -32,7 +38,7 @@
     transition: .3s;
 }
 
-.todoListItem .wrapper .spanStyle:hover {
+.todoListItem .wrapper span:hover {
     transform: scale(1.3);
 }
 
