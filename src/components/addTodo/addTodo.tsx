@@ -25,6 +25,9 @@ const AddTodo: FC<AddTodoProps> = ({ addNewTodo }) => {
         if ((newTodo !== '' || null) && (newTodo.length <= 50)) {
             addNewTodo(newTodo, deadLineData, deadLineTime, description);
             setNewTodo('');
+            setDeadLineData('');
+            setDeadLineTime('');
+            setdescription('');
             history.push('/')
         } else {
             alert('You must fill in the field "To do". Remember - no more than 50 characters! Date, Time and description are optional');
@@ -61,26 +64,28 @@ const AddTodo: FC<AddTodoProps> = ({ addNewTodo }) => {
                     </label>
 
 
-                        <label htmlFor="setDeadline">
+                        <label htmlFor="setDeadlineData">
                             Dead Line Data:&nbsp;
                             <input
                                 type="date"
-                                name="setDeadline"
-                                id="setDeadline"
+                                name="setDeadlineData"
+                                id="setDeadlineData"
                                 placeholder="Enter deadline .."
                                 className='input'
+                                value={deadLineData}
                                 onChange={DeadLineData}
                             />
                         </label>
 
-                        <label htmlFor="setDeadline">
+                        <label htmlFor="setDeadlineTime">
                             Dead Line Time:&nbsp;
                             <input
                                 type="time"
-                                name="setDeadline"
-                                id="setDeadline"
+                                name="setDeadlineTime"
+                                id="setDeadlineTime"
                                 placeholder="Enter deadline .."
                                 className='input'
+                                value={deadLineTime}
                                 onChange={DeadLineTime}
                             />
                         </label>
@@ -93,6 +98,7 @@ const AddTodo: FC<AddTodoProps> = ({ addNewTodo }) => {
                             id="description"
                             placeholder="Enter description .."
                             className='inputDesc'
+                            value={description}
                             onChange={Description}
                         />
                     </label></div>

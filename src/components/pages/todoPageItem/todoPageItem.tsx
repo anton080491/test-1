@@ -3,17 +3,15 @@ import { Todo } from '../../types/types';
 import { useHistory } from 'react-router-dom';
 import './todoPageItem.css';
 
-declare var confirm: (question: string) => boolean;
 
 interface TodoPageItemProps {
     todo: Todo;
     changeTodo: (id: number) => void;
     changeDoing: (id: number) => void;
     changeDone: (id: number) => void;
-    changeShowingModal: () => void;
 }
 
-const TodoPageItem: FC<TodoPageItemProps> = ({ todo, changeTodo, changeDoing, changeDone, changeShowingModal }) => {
+const TodoPageItem: FC<TodoPageItemProps> = ({ todo, changeTodo, changeDoing, changeDone }) => {
 
     const history = useHistory()
 
@@ -32,21 +30,6 @@ const TodoPageItem: FC<TodoPageItemProps> = ({ todo, changeTodo, changeDoing, ch
         changeDone(id)
     }
 
-    const changeShowingDate = (event: React.MouseEvent<HTMLSpanElement>, changeShowingModal) => {
-        event.preventDefault();
-        const shoudChange = confirm('Are you sure you want to change Date?');
-        if (shoudChange) {
-            changeShowingModal()
-        }
-    }
-
-    const changeShowingTime = (event: React.MouseEvent<HTMLSpanElement>, changeShowingModal) => {
-        event.preventDefault();
-        const shoudChange = confirm('Are you sure you want to change Time?');
-        if (shoudChange) {
-            changeShowingModal()
-        }
-    }
 
     return (
         <React.Fragment>
@@ -69,12 +52,10 @@ const TodoPageItem: FC<TodoPageItemProps> = ({ todo, changeTodo, changeDoing, ch
                         onClick={event => ChangeDoneStatus(event, todo.id)}
                     >Done</span>
                     {
-                        todo.deadLineData ? <span className='deadLine'
-                            onClick={event => changeShowingDate(event, changeShowingModal)}>{todo.deadLineData}</span> : null
+                        todo.deadLineData ? <span className='deadLine' onClick={event => event.preventDefault()}>{todo.deadLineData}</span> : null
                     }
                     {
-                        todo.deadLineTime ? <span className='deadLine'
-                            onClick={event => changeShowingTime(event, changeShowingModal)}>{todo.deadLineTime}</span> : null
+                        todo.deadLineTime ? <span className='deadLine'>{todo.deadLineTime}</span> : null
                     }
                     <span className='back'
                         style={{ cursor: "pointer" }}

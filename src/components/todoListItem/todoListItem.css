@@ -42,6 +42,14 @@
     transform: scale(1.3);
 }
 
+.todoListItem .wrapper span:nth-child(4) {
+    transform: scale(1);
+}
+
+.todoListItem .wrapper span:nth-child(5) {
+    transform: scale(1);
+}
+
 .deadLine {
     padding: 2px;
     margin-right: 15px;
@@ -49,5 +57,4 @@
     color: black;
     border: wheat;
     border-radius: 15%;
-    cursor: pointer;
 }
