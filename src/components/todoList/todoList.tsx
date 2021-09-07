@@ -11,9 +11,11 @@ interface TodoListProps {
     changeTodo: (id: number) => void;
     changeDoing: (id: number) => void;
     changeDone: (id: number) => void;
+    sendId: (id: number) => void;
+    setShowModal: () => void;
 }
 
-const TodoList: FC<TodoListProps> = ({ todos, onRemove, changeTodo, changeDoing, changeDone }) => {
+const TodoList: FC<TodoListProps> = ({ todos, onRemove, changeTodo, changeDoing, changeDone, sendId, setShowModal }) => {
 
     if (todos.length === 0) {
         return <div style={{ textAlign: "center" }}>Add some tasks</div>
@@ -33,6 +35,8 @@ const TodoList: FC<TodoListProps> = ({ todos, onRemove, changeTodo, changeDoing,
                     changeTodo={changeTodo}
                     changeDoing={changeDoing}
                     changeDone={changeDone}
+                    sendId={sendId}
+                    setShowModal={setShowModal}
                 />
             )}
         </React.Fragment>

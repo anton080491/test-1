@@ -1,7 +1,12 @@
+.wrapperGlobal {
+    width: 800px;
+    margin: 0 auto;
+}
+
 .todoListItem {
     display: flex;
     justify-content: space-between;
-    width: 800px;
+    width: 780px;
     margin: 0 auto;
     margin-top: 8px;
     border-radius: 10px;
@@ -49,6 +54,7 @@
 .todoListItem .wrapper span:nth-child(5) {
     transform: scale(1);
 }
+
 
 .deadLine {
     padding: 2px;

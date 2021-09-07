@@ -9,16 +9,17 @@ interface TodoPageItemProps {
     changeTodo: (id: number) => void;
     changeDoing: (id: number) => void;
     changeDone: (id: number) => void;
+    sendId: (id: number) => void;
+    setShowModal: () => void;
 }
 
-const TodoPageItem: FC<TodoPageItemProps> = ({ todo, changeTodo, changeDoing, changeDone }) => {
+const TodoPageItem: FC<TodoPageItemProps> = ({ todo, changeTodo, changeDoing, changeDone, sendId, setShowModal }) => {
 
     const history = useHistory()
 
     if (todo == null) {
         return <div style={{ textAlign: "center" }}>Add some tasks</div>
     }
-
 
     const ChangeTodoStatus = (event: React.MouseEvent<HTMLSpanElement>, id: number) => {
         changeTodo(id)
@@ -30,6 +31,11 @@ const TodoPageItem: FC<TodoPageItemProps> = ({ todo, changeTodo, changeDoing, ch
         changeDone(id)
     }
 
+    const ChangeDate = (event: React.MouseEvent<HTMLSpanElement>, id: number) => {
+        event.preventDefault();
+        sendId(id);
+        setShowModal();
+    }
 
     return (
         <React.Fragment>
@@ -52,10 +58,12 @@ const TodoPageItem: FC<TodoPageItemProps> = ({ todo, changeTodo, changeDoing, ch
                         onClick={event => ChangeDoneStatus(event, todo.id)}
                     >Done</span>
                     {
-                        todo.deadLineData ? <span className='deadLine'>{todo.deadLineData}</span> : null
+                        todo.deadLineData ? <span className='deadLine'
+                            onClick={event => ChangeDate(event, todo.id)}>{todo.deadLineData}</span> : null
                     }
                     {
-                        todo.deadLineTime ? <span className='deadLine'>{todo.deadLineTime}</span> : null
+                        todo.deadLineTime ? <span className='deadLine'
+                            onClick={event => ChangeDate(event, todo.id)}>{todo.deadLineTime}</span> : null
                     }
                     <span className='back'
                         style={{ cursor: "pointer" }}
