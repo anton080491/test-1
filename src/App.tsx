@@ -36,8 +36,6 @@ const App: FC = () => {
   const SetNewTimeAndDate = (date: string, time: string) => {
     const index = todos.findIndex(elem => elem.id === dateId);
     const old = todos[index];
-    console.log('Old', old);
-    console.log(time, date);
     const newItem = { ...old, deadLineData: date, deadLineTime: time };
     const newArr = [...todos.slice(0, index), newItem, ...todos.slice(index + 1)];
     setTodos(newArr);

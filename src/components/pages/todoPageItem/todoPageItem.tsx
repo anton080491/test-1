@@ -59,11 +59,15 @@ const TodoPageItem: FC<TodoPageItemProps> = ({ todo, changeTodo, changeDoing, ch
                     >Done</span>
                     {
                         todo.deadLineData ? <span className='deadLine'
-                            onClick={event => ChangeDate(event, todo.id)}>{todo.deadLineData}</span> : null
+                            onClick={event => ChangeDate(event, todo.id)}
+                            data-title="click to change date"
+                        >{todo.deadLineData}</span> : null
                     }
                     {
                         todo.deadLineTime ? <span className='deadLine'
-                            onClick={event => ChangeDate(event, todo.id)}>{todo.deadLineTime}</span> : null
+                            onClick={event => ChangeDate(event, todo.id)}
+                            data-title="click to change time"
+                        >{todo.deadLineTime}</span> : null
                     }
                     <span className='back'
                         style={{ cursor: "pointer" }}

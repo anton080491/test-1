@@ -64,3 +64,43 @@
     border: wheat;
     border-radius: 15%;
 }
+
+.deadLine::before,
+.deadLine::after {
+    display: block;
+    position: absolute;
+    visibility: hidden;
+    margin-bottom: 10px;
+    opacity: 0;
+    transition: opacity .7s, margin-bottom .7s;
+    left: 50%;
+}
+
+.deadLine::before {
+    bottom: 30px;
+    margin-left: -100px;
+    padding: 10px;
+    width: 200px;
+    border-radius: 10px;
+    color: #fff;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.4);
+    content: attr(data-title);
+    box-sizing: border-box;
+}
+
+.deadLine::after {
+    content: "";
+    border-top: 10px solid rgba(0, 0, 0, 0.4);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    bottom: 20px;
+    margin-left: -10px;
+}
+
+.deadLine:hover::before,
+.deadLine:hover::after {
+    visibility: visible;
+    opacity: 1;
+    margin-bottom: 0;
+}
