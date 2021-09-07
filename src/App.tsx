@@ -138,7 +138,6 @@ const App: FC = () => {
               setShowModal={() => setShowModal(true)}
             />} />
         </Switch>
-        <button onClick={() => setShowModal(true)}> click</button>
         <Modal
           showModal={showModal}
           setShowModal={() => setShowModal(false)}
