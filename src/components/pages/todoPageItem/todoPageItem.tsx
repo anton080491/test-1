@@ -47,7 +47,7 @@ const TodoPageItem: FC<TodoPageItemProps> = ({ todo, changeTodo, changeDoing, ch
 
                         style={{ background: todo.todo ? 'red' : 'white' }}
                         onClick={event => ChangeTodoStatus(event, todo.id)}
-                    >Todo</span>
+                    >To do</span>
                     <span
 
                         style={{ background: todo.doing ? '#00AF64' : 'white' }}

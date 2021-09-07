@@ -51,7 +51,7 @@ const TodoListItem: FC<TodoListItemProps> = ({ todo, onRemove, changeTodo, chang
                             className='spanStyle'
                             style={{ background: todo.todo ? 'red' : 'white' }}
                             onClick={event => ChangeTodoStatus(event, todo.id)}
-                        >Todo</span>
+                        >To do</span>
                         <span
                             className='spanStyle'
                             style={{ background: todo.doing ? '#00AF64' : 'white' }}
