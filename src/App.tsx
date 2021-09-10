@@ -1,12 +1,14 @@
 import React, { FC } from 'react';
 import { useState } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+// import { useEffect } from 'react';
 
 import TodoList from './components/todoList';
 import TodoPageItem from './components/pages/todoPageItem';
 import AppHeader from './components/appHeader';
 import AddTodo from './components/addTodo';
 import Modal from './components/popUp';
+import SearchProps from './components/searchPanel'
 
 import { Todo } from './components/types/types';
 
@@ -26,6 +28,12 @@ const App: FC = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
 
   const [dateId, setdateId] = useState<number>();
+
+  const [searchTodoName, setSearchTodoName] = useState<string>('');
+
+  const sendUpdateSearch = (name: string) => {
+    setSearchTodoName(name);
+  }
 
 
   const SendId = (id: number) => {
@@ -114,11 +122,13 @@ const App: FC = () => {
         />
         <AddTodo
           addNewTodo={AddNewTodo} />
-
+        <SearchProps
+          sendUpdateSearch={sendUpdateSearch} />
         <Switch>
           <Route path='/' exact>
             <TodoList
               todos={todos}
+              searchTodoName={searchTodoName}
               onRemove={RemoveTodo}
               changeTodo={ChangeTodoStatus}
               changeDoing={ChangeDoingStatus}

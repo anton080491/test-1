@@ -7,6 +7,7 @@ import './todoList.css';
 
 interface TodoListProps {
     todos: Todo[];
+    searchTodoName: Todo;
     onRemove: (id: number) => void;
     changeTodo: (id: number) => void;
     changeDoing: (id: number) => void;
@@ -15,7 +16,7 @@ interface TodoListProps {
     setShowModal: () => void;
 }
 
-const TodoList: FC<TodoListProps> = ({ todos, onRemove, changeTodo, changeDoing, changeDone, sendId, setShowModal }) => {
+const TodoList: FC<TodoListProps> = ({ todos, onRemove, changeTodo, changeDoing, changeDone, sendId, setShowModal, searchTodoName }) => {
 
     if (todos.length === 0) {
         return <div style={{ textAlign: "center" }}>Add some tasks</div>
@@ -25,20 +26,39 @@ const TodoList: FC<TodoListProps> = ({ todos, onRemove, changeTodo, changeDoing,
         onRemove(id);
     }
 
+    let content = todos.map(todo =>
+        <TodoListItem
+            key={todo.id}
+            todo={todo}
+            onRemove={removeTodo}
+            changeTodo={changeTodo}
+            changeDoing={changeDoing}
+            changeDone={changeDone}
+            sendId={sendId}
+            setShowModal={setShowModal}
+        />
+    )
+
+    if (searchTodoName.length > 1) {
+        const searchTodo = todos.filter(todo => todo.name.toLowerCase().indexOf(searchTodoName.toLowerCase()) > -1);
+        content = searchTodo.map(todo =>
+            <TodoListItem
+                key={todo.id}
+                todo={todo}
+                onRemove={removeTodo}
+                changeTodo={changeTodo}
+                changeDoing={changeDoing}
+                changeDone={changeDone}
+                sendId={sendId}
+                setShowModal={setShowModal}
+            />
+        )
+
+    }
+
     return (
         <React.Fragment>
-            {todos.map(todo =>
-                <TodoListItem
-                    key={todo.id}
-                    todo={todo}
-                    onRemove={removeTodo}
-                    changeTodo={changeTodo}
-                    changeDoing={changeDoing}
-                    changeDone={changeDone}
-                    sendId={sendId}
-                    setShowModal={setShowModal}
-                />
-            )}
+            {content}
         </React.Fragment>
     )
 }
