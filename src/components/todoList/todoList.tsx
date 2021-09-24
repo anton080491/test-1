@@ -7,7 +7,7 @@ import './todoList.css';
 
 interface TodoListProps {
     todos: Todo[];
-    searchTodoName: Todo;
+    searchTodoName: string;
     onRemove: (id: number) => void;
     changeTodo: (id: number) => void;
     changeDoing: (id: number) => void;
@@ -22,15 +22,15 @@ const TodoList: FC<TodoListProps> = ({ todos, onRemove, changeTodo, changeDoing,
         return <div style={{ textAlign: "center" }}>Add some tasks</div>
     }
 
-    const removeTodo = (id: number) => {
-        onRemove(id);
-    }
+    // const removeTodo = (id: number) => {
+    //     onRemove(id);
+    // }
 
     let content = todos.map(todo =>
         <TodoListItem
             key={todo.id}
             todo={todo}
-            onRemove={removeTodo}
+            onRemove={onRemove}
             changeTodo={changeTodo}
             changeDoing={changeDoing}
             changeDone={changeDone}
@@ -45,7 +45,7 @@ const TodoList: FC<TodoListProps> = ({ todos, onRemove, changeTodo, changeDoing,
             <TodoListItem
                 key={todo.id}
                 todo={todo}
-                onRemove={removeTodo}
+                onRemove={onRemove}
                 changeTodo={changeTodo}
                 changeDoing={changeDoing}
                 changeDone={changeDone}
