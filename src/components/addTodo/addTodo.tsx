@@ -16,12 +16,11 @@ const AddTodo: FC<AddTodoProps> = ({ addNewTodo }) => {
     const [deadLineTime, setDeadLineTime] = useState<string>('')
     const [description, setdescription] = useState<string>('')
 
-    const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const changeHandler = (event: any) => {
         setNewTodo(event.target.value)
     }
 
-    const сreateNewTodo = (event: React.MouseEvent<HTMLButtonElement>) => {
-        event.preventDefault();
+    const сreateNewTodo = () => {
         if ((newTodo !== '' || null) && (newTodo.length <= 50)) {
             addNewTodo(newTodo, deadLineData, deadLineTime, description);
             setNewTodo('');

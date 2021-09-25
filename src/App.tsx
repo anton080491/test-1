@@ -12,8 +12,6 @@ import SearchProps from './components/searchPanel'
 
 import { Todo } from './components/types/types';
 
-declare var confirm: (question: string) => boolean
-
 const App: FC = () => {
 
   const [todos, setTodos] = useState<Todo[]>([
@@ -35,37 +33,25 @@ const App: FC = () => {
     setSearchTodoName(name);
   }
 
-
   const SendId = (id: number) => {
     setdateId(id);
   }
 
-
   const SetNewTimeAndDate = (date: string, time: string) => {
-    const index = todos.findIndex(elem => elem.id === dateId);
-    const old = todos[index];
-    const newItem = { ...old, deadLineData: date, deadLineTime: time };
-    const newArr = [...todos.slice(0, index), newItem, ...todos.slice(index + 1)];
-    setTodos(newArr);
-    setdateId(undefined);
+    const shoudChange = window.confirm('Are you really want to change this item?');
+    if (shoudChange) {
+      setTodos(prev => prev.map(todo => {
+        if (todo.id === dateId) {
+          todo.deadLineData = date;
+          todo.deadLineTime = time;
+        }
+        return todo
+      }))
+    }
   }
 
-
-
-  //Add LocalStorage 
-
-  // useEffect(() => {
-  //   const saved = JSON.parse(localStorage.getItem('todos') || '[]') as Todo[];
-  //   setTodos(saved);
-  // }, [])
-
-  // useEffect(() => {
-  //   localStorage.setItem('todos', JSON.stringify(todos));
-  // }, [todos])
-
-
   const AddNewTodo = (name: string, deadLineData: string, deadLineTime: string, description: string) => {
-    setMaxId(prev => prev++)
+    setMaxId(prev => ++prev)
     const newTodo: Todo = { id: maxId, todo: true, doing: false, done: false, name: name };
     if (deadLineData) {
       newTodo.deadLineData = deadLineData;
@@ -80,7 +66,7 @@ const App: FC = () => {
   }
 
   const RemoveTodo = (id: number) => {
-    const shoudRemove = confirm('Are you sure you want to delete the task?')
+    const shoudRemove = window.confirm('Are you sure you want to delete the task?')
     if (shoudRemove) {
       setTodos(prev => prev.filter(todo => todo.id !== id))
     }
@@ -110,7 +96,6 @@ const App: FC = () => {
     setTodos(newArr);
   }
 
-
   return (
     <BrowserRouter>
       <React.Fragment>
@@ -137,7 +122,6 @@ const App: FC = () => {
               setShowModal={() => setShowModal(true)}
             />
           </Route>
-
           <Route path='/:id'
             render={({ match }) => <TodoPageItem
               todo={todos.find(item => item.id === (+match.params.id))}

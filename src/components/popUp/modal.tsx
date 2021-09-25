@@ -2,8 +2,6 @@ import React, { FC } from 'react';
 import { useState } from 'react';
 import './modal.css';
 
-declare var confirm: (question: string) => boolean
-
 interface ModalProps {
     showModal: boolean;
     setShowModal: () => void;
@@ -23,22 +21,15 @@ const Modal: FC<ModalProps> = ({ showModal, setShowModal, setNewTimeAndDate }) =
         setTime(event.target.value)
     }
 
-    const changeData = (event: React.MouseEvent<HTMLButtonElement>) => {
-        event.preventDefault();
-        const shoudChange = confirm('Are you sure you want to change date and time?');
-        if (shoudChange) {
-            if (date !== '' || time !== '') {
-                setNewTimeAndDate(date, time);
-                setDate('');
-                setTime('');
-                setShowModal();
-            } else {
-                setShowModal();
-            }
+    const changeData = (event: any) => {
+        if (date !== '' || time !== '') {
+            setNewTimeAndDate(date, time);
+            setDate('');
+            setTime('');
+            setShowModal();
         } else {
             setShowModal();
         }
-
     }
 
     return (
