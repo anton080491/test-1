@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import './addTodo.css';
 
 interface AddTodoProps {
-    addNewTodo(title: string, deadLineData: string, deadLineTime: string, description: string): void
+    addNewTodo: (title: string, deadLineData: string, deadLineTime: string, description: string) => void
 }
 
 const AddTodo: FC<AddTodoProps> = ({ addNewTodo }) => {
