@@ -80,6 +80,8 @@ const App: FC = () => {
     setTodos(newArr);
   }
 
+
+
   const ChangeDoingStatus = (id: number) => {
     const index = todos.findIndex(elem => elem.id === id);
     const old = todos[index];
