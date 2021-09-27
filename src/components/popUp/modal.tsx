@@ -35,8 +35,7 @@ const Modal: FC<ModalProps> = ({ showModal, setShowModal, setNewTimeAndDate }) =
     return (
         <React.Fragment>
             <div className={showModal ? "showModal active" : "showModal"}>
-                <div className="modal__content"
-                    onClick={(e) => e.stopPropagation()}>
+                <div className="modal__content">
                     <div className="modal__inputs">
                         <label htmlFor="setDeadlineData">
                             Dead Line Data:&nbsp;

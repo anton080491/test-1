@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import { useState } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-// import { useEffect } from 'react';
 
 import TodoList from './components/todoList';
 import TodoPageItem from './components/pages/todoPageItem';
@@ -28,6 +27,12 @@ const App: FC = () => {
   const [dateId, setdateId] = useState<number>();
 
   const [searchTodoName, setSearchTodoName] = useState<string>('');
+
+  const [allTodo, setAllTodo] = useState<boolean>(false);
+  const [allDoing, setAllDoing] = useState<boolean>(false);
+  const [allDone, setAllDone] = useState<boolean>(false);
+  const [allTasks, setAllTasks] = useState<boolean>(false);
+
 
   const sendUpdateSearch = (name: string) => {
     setSearchTodoName(name);
@@ -80,8 +85,6 @@ const App: FC = () => {
     setTodos(newArr);
   }
 
-
-
   const ChangeDoingStatus = (id: number) => {
     const index = todos.findIndex(elem => elem.id === id);
     const old = todos[index];
@@ -106,6 +109,34 @@ const App: FC = () => {
           Todo={todos.filter((item) => item.todo).length}
           Doing={todos.filter((item) => item.doing).length}
           Done={todos.filter((item) => item.done).length}
+          ShowAllTasks={() => {
+            setAllTasks(prev => !prev)
+            setAllTodo(false);
+            setAllDoing(false);
+            setAllDone(false)
+          }
+          }
+          allTodo={() => {
+            setAllTasks(false)
+            setAllTodo(prev => !prev);
+            setAllDoing(false);
+            setAllDone(false)
+          }
+          }
+          allDoing={() => {
+            setAllTasks(false)
+            setAllTodo(false);
+            setAllDoing(prev => !prev);
+            setAllDone(false)
+          }
+          }
+          allDone={() => {
+            setAllTasks(false)
+            setAllTodo(false);
+            setAllDoing(false);
+            setAllDone(prev => !prev)
+          }
+          }
         />
         <AddTodo
           addNewTodo={AddNewTodo} />
@@ -122,6 +153,10 @@ const App: FC = () => {
               changeDone={ChangeDoneStatus}
               sendId={SendId}
               setShowModal={() => setShowModal(true)}
+              allTasks={allTasks}
+              allTodo={allTodo}
+              allDoing={allDoing}
+              allDone={allDone}
             />
           </Route>
           <Route path='/:id'
